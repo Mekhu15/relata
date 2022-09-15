@@ -1,7 +1,7 @@
-import './App.css';
+import ProductPage from './components/ProductPage';
 
 function App() {
-  return <div className='App'>Hello World</div>;
+  return <ProductPage />;
 }
 
 export default App;
