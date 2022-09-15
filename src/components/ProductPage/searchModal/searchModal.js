@@ -8,8 +8,6 @@ import React, {
 
 import { ProductPageDataContext } from '../../../context/product';
 
-import { tools } from '../../../data/product';
-
 import Suggestions from './suggestions';
 
 import styles from './searchModal.module.css';
@@ -45,11 +43,9 @@ function SearchModal() {
   }
 
   const handleItemClick = useCallback(
-    (addedTool, position) => {
+    (addedTool) => {
       const { icon, text } = addedTool;
-      const updatedArray = suggestedTools.filter(
-        (_, index) => index !== position
-      );
+      const updatedArray = suggestedTools.filter((tool) => tool !== addedTool);
       setFilteredSuggestions(updatedArray);
       updateSuggestedTools(updatedArray);
       setAddedTools((currentState) => {
@@ -98,7 +94,7 @@ function SearchModal() {
   function handleChange(event) {
     const value = event.target.value.toLowerCase().trim();
     setInputValue(value);
-    const suggestions = tools.filter((tool) =>
+    const suggestions = suggestedTools.filter((tool) =>
       tool.text.toLowerCase().includes(value)
     );
     setFilteredSuggestions(suggestions);

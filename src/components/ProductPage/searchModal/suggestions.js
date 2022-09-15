@@ -7,9 +7,9 @@ function Suggestions(props) {
   const { suggestedTools, onItemClick, isDisabled } = props;
 
   const handleAddingTools = useCallback(
-    (addedTool, index) => {
+    (addedTool) => {
       if (isDisabled) return;
-      onItemClick(addedTool, index);
+      onItemClick(addedTool);
     },
     [isDisabled, onItemClick]
   );
